@@ -6,5 +6,5 @@ function adjacency_matrix=distance_vector(xtrain);
                 adjacency_matrix(j,i)=adjacency_matrix(i,j);
             end
             
-        end
+    end
 end
