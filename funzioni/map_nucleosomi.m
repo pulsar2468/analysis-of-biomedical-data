@@ -1,7 +1,5 @@
 function [Y,targets]=map_nucleosomi(namefile);
-%path � il percorso che contiene i dataset fasta dei nucleosomi
-path = '/home/nataraja/Scrivania/Analisi Dati Biomedici/Elaborato La Grassa/Dataset/';
-%path = 'D:\lavoro\Dropbox\Analisi Dati Biomedici (LM_16-17)\Dataset\Dataset_Nucleosomi'
+path = '/home/nataraja/Scrivania/analysis-of-biomedical-data/Dataset/';
 
 filename = [path,'/',namefile];
 
