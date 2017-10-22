@@ -21,7 +21,7 @@ end
 
 K=2;
 
-msg = ['Please wait generattion of ', num2str(K),'mers'];
+msg = ['Please wait generation of ', num2str(K),'mers'];
 h = waitbar(0,msg);
 
 Y=zeros(length(X{1})+length(X{2}),4^K);
