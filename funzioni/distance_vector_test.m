@@ -1,6 +1,6 @@
 function [adjacency_matrix,e,outlier,len_training_set]=distance_vector_test(xtrain,xtest,e,adjacency_matrix,tr_value);
 outlier=[];
-    adjacency_matrix_2=zeros(1,size(xtrain,1)); 
+    adjacency_matrix_2=zeros(1,size(adjacency_matrix,1)); 
    % h = waitbar(0,'learning');
     for i=1:size(xtest,1)
           %waitbar(i/size(xtest,1))

@@ -63,15 +63,15 @@
 %For overfitting with cross-validtion k fold. Training with nucleosoma, but
 %testing of linker of the same family
 
-[Y,targets]=map_nucleosomi('nucleosomes_vs_linkers_melanogaster.fas'); %rappresentation of data with k-meri
+[Y,targets]=map_nucleosomi('nucleosomes_vs_linkers_elegans.fas'); %rappresentation of data with k-meri
 [xdataset,xtestset,xnt ] = setsplit( Y,targets, 1); % i divide  dataset into two sets nucleosomes and linkers
 %[Y,targets]=map_nucleosomi('nucleosomes_vs_linkers_sapiens.fas'); %rappresentation of data with k-meri
 %[ydataset,ytestset,ynt ] = setsplit( Y,targets, 1); % i divide  dataset into two sets nucleosomes and linkers
 
     %cvv = cvpartition(size(ydataset{1},1),'Kfold',10); % kfold
 
-k_fold=[2:9];%%%%%%%%%%%%%%
-tr_value=[2,1.428,1.15];
+k_fold=[9];%%%%%%%%%%%%%%
+tr_value=[2.4,2.2,2];
 for i = 1:size(k_fold,2)
     
     cvp = cvpartition(size(xdataset{1},1),'Kfold',k_fold(i)); % kfold
@@ -89,7 +89,7 @@ for i = 1:size(k_fold,2)
     %fprintf('Test with Training-set: %d Test-set: %d K-fold: %d\n',cvp.TrainSize(j),cvp.TestSize(j),j)
     %fprintf('Training-set %d Test-set:%d\n',(cvp.TrainSize(j)/cvp.NumObservations)*100,(cvp.TestSize(j)/cvp.NumObservations)*100)
     for c=1:size(tr_value,2)
-    [mst,adjacency_matrix,e,outlier,error]=create_mst(xtrain,xtest,tr_value(c));
+    [mst,adjacency_matrix,e,outlier,error]=create_mst(xtrain,xtest,tr_value(c),xdataset); %xdataset{2}=linker_data
 %     if error < 0.2
 %         break
 %     end
