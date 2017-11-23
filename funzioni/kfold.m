@@ -70,8 +70,8 @@
 
     %cvv = cvpartition(size(ydataset{1},1),'Kfold',10); % kfold
 
-k_fold=[9];%%%%%%%%%%%%%%
-tr_value=[2.4,2.2,2];
+k_fold=[7:9];%%%%%%%%%%%%%%
+tr_value=[8,5,4];
 for i = 1:size(k_fold,2)
     
     cvp = cvpartition(size(xdataset{1},1),'Kfold',k_fold(i)); % kfold
@@ -89,7 +89,7 @@ for i = 1:size(k_fold,2)
     %fprintf('Test with Training-set: %d Test-set: %d K-fold: %d\n',cvp.TrainSize(j),cvp.TestSize(j),j)
     %fprintf('Training-set %d Test-set:%d\n',(cvp.TrainSize(j)/cvp.NumObservations)*100,(cvp.TestSize(j)/cvp.NumObservations)*100)
     for c=1:size(tr_value,2)
-    [mst,adjacency_matrix,e,outlier,error]=create_mst(xtrain,xtest,tr_value(c),xdataset); %xdataset{2}=linker_data
+    [mst,adjacency_matrix,e,outlier]=create_mst(xtrain,xtest,tr_value(c),xdataset); %xdataset{2}=linker_data
 %     if error < 0.2
 %         break
 %     end

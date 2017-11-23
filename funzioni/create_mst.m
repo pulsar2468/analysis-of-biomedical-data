@@ -25,13 +25,15 @@ function [mst,adjacency_matrix,e,outlier,error]=create_mst(xtrain,xtest,tr_value
     [adjacency_matrix,e,outlier,len_training_set]=distance_vector_test(xtrain{1},xtest{1},e,adjacency_matrix,tr_value);
     %[adjacency_matrix,e,outlier,len_training_set]=cosine_similarity_test(xtrain{1},xtest{1},e,adjacency_matrix,tr_value);
     %end learning, now i try to get specivity for linker sequence
-    sensivity=(len_training_set/(size(xtrain{1},1) + size(xtest{1},1)))*100;
-    error=(size(outlier,2)/2)/size(xtest{1},1)*100;
+    true_positive=len_training_set;
+    sensivity=(true_positive/(size(xtrain{1},1) + size(xtest{1},1)))*100;
+    %error=(size(outlier,2)/2)/size(xtest{1},1)*100;
     [adjacency_matrix,e,outlier,len_training_set_withLinker]=distance_vector_test(xtrain{1},linker{2},e,adjacency_matrix,tr_value);
     false_positive = len_training_set_withLinker-len_training_set;
     true_negative = size(linker{2},1) - false_positive;
     specivity= (true_negative/(true_negative + false_positive))*100;
-    accuracy= 100*((len_training_set + true_negative) / (len_training_set + true_negative + size(xtrain{1},1) + size(xtest{1},1) + false_positive));
-    sprintf('%d %d %d %d %d %d %d %d %d %d',size(xtrain{1},1),size(xtest{1},1),len_training_set,sensivity,specivity,accuracy,error,toc,tr_value)
+    accuracy= 100*((true_positive + true_negative) / (true_negative + size(xtrain{1},1) + size(xtest{1},1) + false_positive));
+    %error=1-accuracy;
+    sprintf('%d %d %d %d %d %d %d %d %d',size(xtrain{1},1),size(xtest{1},1),len_training_set,sensivity,specivity,accuracy,toc,tr_value)
     
 
