@@ -71,7 +71,7 @@
     %cvv = cvpartition(size(ydataset{1},1),'Kfold',10); % kfold
 
 k_fold=[7:9];%%%%%%%%%%%%%%
-tr_value=[8,5,4];
+tr_value=[2,1.45,1.13];
 for i = 1:size(k_fold,2)
     
     cvp = cvpartition(size(xdataset{1},1),'Kfold',k_fold(i)); % kfold
